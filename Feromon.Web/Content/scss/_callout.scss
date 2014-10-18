@@ -1,0 +1,42 @@
+/***********************************
+              Callout
+************************************/
+$callout-padding: 40px;
+$callout-bg: #e7e7e7;
+$callout-subtitle-margin-top: 20px;
+$callout-btn-margin-top: 25px;
+
+.callout{
+    display: block;
+    position: relative;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: $callout-padding 0;
+    background-color: $callout-bg;
+
+    /* Callout Title 
+    ************************/
+    .callout-title{
+        margin:0;
+    }
+
+    /* Callout Subtitle 
+    ************************/
+    .callout-subtitle{
+        margin-top: $callout-subtitle-margin-top;
+    }
+
+    /* Callout Button 
+    ************************/
+    .callout-btn{
+        margin-top: $callout-btn-margin-top;
+    }
+
+    /* Callout Parallax 
+    ************************/
+    &.callout-parallax{
+        padding: 3 * $callout-padding 0;
+    }
+}
+

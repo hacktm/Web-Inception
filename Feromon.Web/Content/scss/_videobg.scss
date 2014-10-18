@@ -1,0 +1,46 @@
+/***********************************
+           Video Background
+************************************/
+.video-bg{
+    padding: 20px;
+    position: relative;
+    display: block;
+}
+
+/* Video
+************************/
+.videoBG{
+    position: absolute; 
+    z-index: 0; 
+    top: 0px; 
+    left: 0px; 
+    height: 100%; 
+    width: 100%; 
+    opacity: 1; 
+    overflow: hidden;
+    video{
+        position: absolute; 
+        z-index: 0; 
+        top: 0px; 
+        left: 0px; 
+        min-width: 100%; 
+        min-height: 100%;
+    }
+    img{
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}
+
+/* Content
+************************/
+.videoBG_wrapper{
+    position: relative; 
+    top: 0px; 
+    left: 0px; 
+    z-index: 1;
+}

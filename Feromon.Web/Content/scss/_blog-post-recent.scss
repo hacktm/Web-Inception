@@ -1,0 +1,62 @@
+/***********************************
+         Recent Blog Posts
+************************************/
+$blog-post-recent-date-size: 80px;
+$blog-post-recent-image-size: 100px;
+$blog-post-recent-margin: 16px;
+
+.blog-post-recent{
+
+    /* Blog Post Date
+    ************************/
+    .blog-post-recent-date{
+        width: $blog-post-recent-date-size;
+        text-align: center;
+        position: absolute;
+
+        /* Blog Post Date Day
+        ************************/
+        h3{
+            margin: 0;
+        }
+
+        /* Blog Post Date Month
+        ************************/
+        p{
+
+        }
+    }
+
+    /* Blog Post Image
+    ************************/
+    .blog-post-recent-image{
+        width: $blog-post-recent-image-size;
+        height: $blog-post-recent-image-size;
+        position: absolute;
+        margin-left: $blog-post-recent-date-size + $blog-post-recent-margin;
+    }
+
+    /* Blog Post Details
+    ************************/
+    .blog-post-recent-details{
+        padding-left: $blog-post-recent-date-size + $blog-post-recent-image-size + 2 * $blog-post-recent-margin;
+
+        /* Blog Post Title
+        ************************/
+        h1{
+            margin: 0;
+        }
+
+        /* Blog Post Display Text
+        ************************/
+        p{
+
+        }
+
+        /* Creation Details
+        ************************/
+        ul li a{
+
+        }
+    }
+}
