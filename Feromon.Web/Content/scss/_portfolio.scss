@@ -1,0 +1,206 @@
+/***********************************
+         Portfolio Filter
+************************************/
+.portfolio-filter{
+    ul li a{
+        
+    }
+}
+
+/***********************************
+               Portfolio
+************************************/
+$portfolio-project-title-font-size: 32px;
+$portfolio-project-category-font-size: 14px;
+
+.portfolio{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    //Clearfix
+    &:before,
+        &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+    @include transition(height, 0.5s, ease);
+
+    /* Project
+    ************************/
+    .portfolio-project{
+        position: relative;
+        display: block;
+        width: 100%;
+        float:left;        
+
+        /* Project Image
+        ************************/
+        .portfolio-project-image{ 
+            position: relative;
+            z-index: 0;
+            img{
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Project Details
+        ************************/
+        .portfolio-project-details{
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            z-index: 1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            @include transition(all, 0.5s, ease);
+
+            /* Project Title
+            ************************/
+            .portfolio-project-title{
+                color: #fff;
+                font-size: $font-size-h3;
+            }
+
+            /* Project Category
+            ************************/
+            .portfolio-project-category{
+            }
+
+            /* Project Actions
+            ************************/
+            .portfolio-project-actions{
+
+            } 
+        }
+
+        &:hover .portfolio-project-details{
+            opacity: 1;
+        }
+    }
+
+    /* Portfolio with Gap
+     ************************/
+    &.portfolio-gap{
+        /* Project
+         ************************/
+        .portfolio-project{
+            .portfolio-project-image{
+                margin: 5px;
+            }
+        }
+    }
+
+    /* Portfolio lg
+   ************************/
+    $one-third: 1/3;
+    &.portfolio-col-lg-4{
+        .portfolio-project{
+            @media screen and (min-width: $screen-lg){
+                width: 25%;
+            }
+        }
+    }
+    &.portfolio-col-lg-3{
+        .portfolio-project{
+            @media screen and (min-width: $screen-lg){
+                width: percentage($one-third);
+            }
+        }
+    }
+    &.portfolio-col-lg-2{
+        .portfolio-project{
+            @media screen and (min-width: $screen-lg){
+                width: 50%;
+            }
+        }
+    }
+
+    /* Portfolio md
+    ************************/
+    &.portfolio-col-md-4{
+        .portfolio-project{
+            width: 25%;
+            @media screen and (max-width: $screen-md-max){
+                width: 25%;
+            }
+        }
+    }
+    &.portfolio-col-md-3{
+        .portfolio-project{
+            width: percentage($one-third);
+            @media screen and (max-width: $screen-md-max){
+                width: percentage($one-third);
+            }
+        }
+    }
+    &.portfolio-col-md-2{
+        .portfolio-project{
+            width: 50%;
+            @media screen and (max-width: $screen-md-max){
+                width: 50%;
+            }
+        }
+    }
+
+    /* Portfolio sm
+    ************************/
+    &.portfolio-col-sm-4{
+        .portfolio-project{
+            @media screen and (max-width: $screen-sm-max){
+                width: 25%;
+            }
+        }
+    }
+    &.portfolio-col-sm-3{
+        .portfolio-project{
+            @media screen and (max-width: $screen-sm-max){
+                width: percentage($one-third);
+            }
+        }
+    }
+    &.portfolio-col-sm-2{
+        .portfolio-project{
+            @media screen and (max-width: $screen-sm-max){
+                width: 50%;
+            }
+        }
+    }
+
+    /* Portfolio xs
+    ************************/
+    &.portfolio-col-xs-4{
+        .portfolio-project{
+            @media screen and (max-width: $screen-xs-max){
+                width: 25%;
+            }
+        }
+    }
+    &.portfolio-col-xs-3{
+        .portfolio-project{
+            @media screen and (max-width: $screen-xs-max){
+                width: percentage($one-third);
+            }
+        }
+    }
+    &.portfolio-col-xs-2{
+        .portfolio-project{
+            @media screen and (max-width: $screen-xs-max){
+                width: 50%;
+            }
+        }
+    }
+
+
+
+
+}

@@ -1,0 +1,10 @@
+/***********************************
+              Animate
+************************************/
+*[data-animate]{
+    visibility: hidden;
+}
+
+*[data-animate].animated{
+    visibility: visible;
+}

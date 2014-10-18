@@ -1,0 +1,138 @@
+/***********************************
+               Header
+************************************/
+.header{
+    @media screen and (min-width: $screen-md-min){
+        margin-top: $navbar-top-padding + $contact-bar-height;
+    }
+
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+
+    /* Title
+    ************************/
+    .header-title{
+        font-size: 72px;
+        font-weight: 300;
+        @media screen and (max-width: $screen-sm){
+            font-size: 56px;
+            margin-top: 50px;
+        }
+    }
+
+    /* Subtitle
+    ************************/
+    .hero-button{
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 300px;
+        text-align: center;
+        @media screen and (max-width: $screen-sm){
+            width: 100%;
+        }
+        &.hero-button-sm{
+            width: 100px;
+            @include border-radius(2px);
+        }
+    }
+
+    .header-text{
+        z-index: 5;
+        display: block;
+        position: fixed;
+        bottom: 150px;
+        left: 0;
+        width: 100%;
+        @media screen and (max-width: $screen-sm){
+            left: 10px;
+            bottom: 0px;
+            position: relative;
+        }
+    }
+
+    .header-layer{
+        width: 100%;
+        height: auto;
+        display: block;
+        bottom:0;
+        left:0;
+        position: absolute;
+        @media screen and (max-width: $screen-sm){
+            display:none;
+        }
+    }
+    #header-layer-0{
+        z-index:4;
+    }
+    #header-layer-1{
+        z-index:1;
+    }
+    #header-layer-2{
+        z-index:2;
+    }
+    #header-layer-3{
+        z-index:3;
+    }
+
+    .header-logo-container{
+        z-index: 100;
+        width: 100%;
+        position: fixed;
+        top:0;
+        left:0;
+        margin-top: 50px;
+        .header-logo{
+            .header-logo-buttons{
+                text-align: right!important;
+                @media screen and (max-width: $screen-sm){
+                    display: none;
+                }
+            }
+        }
+        @media screen and (max-width: $screen-sm){
+            position: relative;
+            margin-top: 0px;
+            left:10px;
+            .header-logo{
+                margin-top: 50px;
+            }
+        }
+    }
+
+    .header-form{
+        h1{
+            font-weight: 300;
+        }
+        padding-top: 200px;
+        input{
+            margin-bottom: 20px;
+        }
+        .hero-button{
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .hasAccount{
+            color: #fff;
+            text-align:center;
+        }
+        .text-center{
+            width: 100%;
+            text-align: center;
+        }
+        @media screen and (max-width: $screen-sm){
+            padding-top: 50px;
+            position: relative;
+        }
+    }
+
+    @media screen and (max-height: 650px){
+        margin-bottom: 90px;
+    }
+    @media screen and (max-width: $screen-sm){
+        margin-bottom: 50px;
+    }
+
+}

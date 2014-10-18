@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Feromon.FacebookHelper;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
+using PayPal;
+using PayPal.OpenIdConnect;
 
 namespace Feromon.Web.Controllers
 {
@@ -20,12 +16,17 @@ namespace Feromon.Web.Controllers
         }
         public virtual ActionResult Index()
         {
-            var token = _facebookIdentityHelper.GetAccessToken((ClaimsIdentity)User.Identity);
-            if (String.IsNullOrWhiteSpace(token) == true)
-            {
-                return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
-            }
-            var result = FriendsDataHelper.GetFriends("all", token);
+            //var token = _facebookIdentityHelper.GetAccessToken((ClaimsIdentity)User.Identity);
+            //if (String.IsNullOrWhiteSpace(token) == true)
+            //{
+            //    return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
+            //}
+            //var result = FriendsDataHelper.GetFriends("all", token);
+
+
+            //Stream compressedfile = Inception.WebClientMVC.Helpers.Utilities.UploadImageCompressed(file, 1200);
+            //var photoURL = azureService.UploadBlobToContainer("photos", Guid.NewGuid() + Path.GetExtension(file.FileName), compressedfile);
+            
             return View();
         }
 
