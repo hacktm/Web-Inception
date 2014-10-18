@@ -29,3 +29,13 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<button value="Send" id="sendButton"></button>
+<script>
+    $(function() {
+        $("#sendButton").click(function() {
+            $.post("http://localhost:24340/Home/SendNotification", function (data) {
+               
+            });
+        });
+    });
+</script>
