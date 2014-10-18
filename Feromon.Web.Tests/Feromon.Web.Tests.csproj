@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FacebookDataTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -92,6 +93,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLayer\Feromon.DataLayer.csproj">
+      <Project>{4FB65A66-C6F5-4B6F-918E-A63302F72B28}</Project>
+      <Name>Feromon.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feromon.FacebookHelper\Feromon.FacebookHelper.csproj">
+      <Project>{efc3258b-77b9-4e8b-ab06-9ff7c97522b5}</Project>
+      <Name>Feromon.FacebookHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Feromon.Web\Feromon.Web.csproj">
       <Project>{DE84B6C3-42A4-49F6-A97F-A0CA401B76EF}</Project>
       <Name>Feromon.Web</Name>
