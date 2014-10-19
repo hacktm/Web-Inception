@@ -23,9 +23,12 @@
                 <div class="panel-body">
                     <center>
                         <img style="width: 200px" src="~/Images/logo.gif" />
+                        <section id="socialLoginForm">
+                            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+                        </section>
                     </center>
                     <!-- Change this to a button or input when using this as a form -->
-                    <a href="index.html" class="btn btn-lg btn-primary btn-block">Login with facebook</a>
+                    
                 </div>
             </div>
         </div>

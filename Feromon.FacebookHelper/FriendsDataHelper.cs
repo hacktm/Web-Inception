@@ -11,14 +11,14 @@ namespace Feromon.FacebookHelper
 {
     public class FriendsDataHelper
     {
-        public static IEnumerable<FriendModel> GetFriends(string category, string accessToken)
+        public static Friends GetFriends(string category, string accessToken)
         {
 
             //if (accessToken == null) return null;
             var client = new FacebookClient(accessToken);
             var friends = client.Get(String.Format("{0}/invitable_friends", "me")).ToString();
-   
-            return null;
+            var facebookFriends = JsonConvert.DeserializeObject<Friends>(friends);
+            return facebookFriends;
         }
     }
 }
