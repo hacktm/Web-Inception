@@ -1,7 +1,8 @@
-﻿@{
+﻿@model DataLayer.EntityModel.Friends
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div>
-    @Html.Partial("_FriendsListPartial")
+    @Html.Partial("_FriendsListPartial", Model)
 </div>

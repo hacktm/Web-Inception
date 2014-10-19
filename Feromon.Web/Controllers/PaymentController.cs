@@ -15,6 +15,7 @@ using PayPal;
 
 namespace Feromon.Web.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class PaymentController : Controller
     {
         private static AspNetUserRepository _aspNetUserRepository = null;
