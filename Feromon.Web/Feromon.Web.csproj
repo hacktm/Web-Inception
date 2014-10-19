@@ -236,6 +236,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ArrowPartialModel.cs" />
+    <Compile Include="Models\CurrentUserModel.cs" />
     <Compile Include="Models\FriendModel.cs" />
     <Compile Include="Models\FriendsDataModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -492,6 +493,7 @@
     <Content Include="Views\Shared\_BuyCondomPartial.cshtml" />
     <Content Include="Views\Shared\_FriendsListPartial.cshtml" />
     <Content Include="Views\Shared\_BuyArrowPartial.cshtml" />
+    <Content Include="Views\Shared\_CurrentUserPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DataLayer.EntityModel;
 using DataLayer.Repositories;
 using Feromon.Web.Models;
+using Newtonsoft.Json;
 
 namespace Feromon.Web.Helpers
 {
@@ -28,6 +30,14 @@ namespace Feromon.Web.Helpers
             var currentUser = _aspNetUserRepository.FindAspNetUser(aspNetUserName);
             if(currentUser == null) return  new ArrowPartialModel(){Count = 0};
             var model = new ArrowPartialModel { Count = _paymentRepository.FindPaymentCount(currentUser.Id, "arrow") };
+            return model;
+        }
+
+        public static CurrentUserModel BuildModel_CurrentUser(string aspNetUserName)
+        {
+            _aspNetUserRepository = new AspNetUserRepository();
+            var currentUser = _aspNetUserRepository.FindAspNetUser(aspNetUserName);
+            var model = new CurrentUserModel { Name = currentUser.UserName};
             return model;
         }
     }

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@section scripts{
+    // Add something here
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -190,16 +193,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <div class="user-info-wrapper">
-                            <div class="user-info-profile-image">
-                                <img src="~/Images/profile.jpg" alt="" width="65" height="65">
-                            </div>
-                            <div class="user-info">
-                                <div class="user-welcome">Welcome</div>
-                                <div class="username">Razvan <strong>IONICA</strong></div>
-                                <div class="status">Status <span class="status-now"><i class="fa fa-circle text-emerald fa"></i> Online</span> </div>
-                            </div>
-                        </div>
+                        @Html.Partial("_CurrentUserPartial", Feromon.Web.Helpers.RazorHelper.BuildModel_CurrentUser(User.Identity.Name))
                     </li>
                     <li class="sidebar-search">
                         <div class="input-group custom-search-form">
@@ -232,3 +226,4 @@
 
 </body>
 </html>
+@RenderSection("scripts", required: false)
