@@ -18,6 +18,7 @@ namespace Feromon.Web.SignalR
             string fromUserId = Context.ConnectionId;
             //Clients.Client(receiver).broadcastNotification(receiver, message);
             Clients.All.broadcastNotification(receiver, message);
+            //Clients.AllExcept(Clients.Caller).broadcastNotification(receiver, message);
         }
     }
 }

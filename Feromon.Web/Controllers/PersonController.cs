@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Feromon.Web.SignalR;
+using Microsoft.AspNet.SignalR;
 
 namespace Feromon.Web.Controllers
 {
@@ -11,10 +13,13 @@ namespace Feromon.Web.Controllers
         [HttpPost]
         public ActionResult ShootSelectedPersons(List<string> selectedPersonList)
         {
-            foreach (var person in selectedPersonList)
-            {
-                //save in database
-            }
+            var context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+            context.Clients.All.BroadcastNotification("UserID", "Message");
+            
+            //foreach (var person in selectedPersonList)
+            //{
+            //    //save in database
+            //}
             return View();
         }
     }

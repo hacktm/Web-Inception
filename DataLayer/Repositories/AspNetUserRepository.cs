@@ -10,8 +10,15 @@ namespace DataLayer.Repositories
     {
         public AspNetUser FindAspNetUser(string name)
         {
-            var user = Context.AspNetUsers.FirstOrDefault(x => x.UserName == name);
-            return user;
+            try
+            {
+                var user = Context.AspNetUsers.FirstOrDefault(x => x.UserName == name);
+                return user;
+            }
+            catch (Exception)
+            {
+            }
+            return null;
         }
     }
 }
