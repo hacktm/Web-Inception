@@ -46,7 +46,20 @@ namespace Feromon.Web.Controllers
             return RedirectToAction("PaymentWithPayPal", model);
         }
 
-        public ActionResult ConfirmCondomPayment(string paymentId)
+        public ActionResult BuyArrow()
+        {
+            var model = new PayPalPaymentModel
+            {
+                Currency = "USD",
+                Description = "Arrow - transaction",
+                Price = "1",
+                ProductName = "arrow",
+                Quantity = "1"
+            };
+            return RedirectToAction("PaymentWithPayPal", model);
+        }
+
+        public ActionResult ConfirmPayment(string productType, string paymentId)
         {
             var currentUser = _aspNetUserRepository.FindAspNetUser(User.Identity.Name);
             var model = new Payment
@@ -55,7 +68,7 @@ namespace Feromon.Web.Controllers
                 ExpirationDate = DateTime.UtcNow.AddDays(30),
                 PaymentDate = DateTime.UtcNow,
                 PaymentId = paymentId,
-                ProductName = "condom",
+                ProductName = productType,
                 Quantity = 1,
                 Usages = 0
             };
@@ -97,13 +110,9 @@ namespace Feromon.Web.Controllers
                 }
                 if (returnUrl != null)
                     return Redirect(returnUrl);
-                switch (product)
-                {
-                    case "condom":
-                        return RedirectToAction("ConfirmCondomPayment",
-                            new {paymentId = Session[Request.Params["guid"]].ToString()});
-                        break;
-                }
+
+                        return RedirectToAction("ConfirmPayment",
+                            new {productType = product, paymentId = Session[Request.Params["guid"]].ToString()});
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)

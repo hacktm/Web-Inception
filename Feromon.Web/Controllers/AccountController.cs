@@ -433,7 +433,7 @@ namespace Feromon.Web.Controllers
         public virtual ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //

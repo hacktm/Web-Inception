@@ -16,7 +16,18 @@ namespace Feromon.Web.Helpers
             _aspNetUserRepository = new AspNetUserRepository();
             _paymentRepository = new PaymentRepository();
             var currentUser = _aspNetUserRepository.FindAspNetUser(aspNetUserName);
+            if (currentUser == null) return new CondomPartialModel(){ Count = 0 };
             var model = new CondomPartialModel {Count = _paymentRepository.FindPaymentCount(currentUser.Id, "condom")};
+            return model;
+        }
+
+        public static ArrowPartialModel BuildModel_Gamification_ArrowPartial(string aspNetUserName)
+        {
+            _aspNetUserRepository = new AspNetUserRepository();
+            _paymentRepository = new PaymentRepository();
+            var currentUser = _aspNetUserRepository.FindAspNetUser(aspNetUserName);
+            if(currentUser == null) return  new ArrowPartialModel(){Count = 0};
+            var model = new ArrowPartialModel { Count = _paymentRepository.FindPaymentCount(currentUser.Id, "arrow") };
             return model;
         }
     }
