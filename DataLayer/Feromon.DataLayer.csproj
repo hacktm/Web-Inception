@@ -49,6 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractRepository.cs" />
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\FriendModel.cs" />
     <Compile Include="EntityModel\InviteFriendModel.cs" />
     <Compile Include="EntityModel\PayPal\PayPalPaymentModel.cs" />
@@ -67,7 +83,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FeromonEntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AspNetUserRepository.cs" />
+    <Compile Include="Repositories\PaymentRepository.cs" />
+    <Compile Include="Repositories\UsageProductRepository.cs" />
+    <Compile Include="UsageProduct.cs">
+      <DependentUpon>FeromonEntityModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="FeromonEntityModel.edmx">
@@ -95,9 +120,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Feromon.IDataLayer\Feromon.IDataLayer.csproj">
       <Project>{4811fefb-41a3-4801-ba78-fc8e7df32e67}</Project>

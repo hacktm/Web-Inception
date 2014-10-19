@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DataLayer;
 using DataLayer.EntityModel.PayPal;
+using DataLayer.Repositories;
 using Feromon.Web.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,10 +17,14 @@ namespace Feromon.Web.Controllers
 {
     public class PaymentController : Controller
     {
+        private static AspNetUserRepository _aspNetUserRepository = null;
+        private static PaymentRepository _paymentRepository = null;
         private static PaymentService _paymentService = null;
 
         public PaymentController()
         {
+            _aspNetUserRepository = new AspNetUserRepository();
+            _paymentRepository = new PaymentRepository();
             _paymentService = new PaymentService();
         }
         // GET: Payment
@@ -26,7 +33,37 @@ namespace Feromon.Web.Controllers
             return View();
         }
 
-        public ActionResult PaymentWithPayPal(PayPalPaymentModel model, String guid, string token, string PayerID)
+        public ActionResult BuyCondom()
+        {
+            var model = new PayPalPaymentModel
+            {
+                Currency = "USD",
+                Description = "Condom - transaction",
+                Price = "1",
+                ProductName = "condom",
+                Quantity = "1"
+            };
+            return RedirectToAction("PaymentWithPayPal", model);
+        }
+
+        public ActionResult ConfirmCondomPayment(string paymentId)
+        {
+            var currentUser = _aspNetUserRepository.FindAspNetUser(User.Identity.Name);
+            var model = new Payment
+            {
+                AspNetUserId = currentUser.Id,
+                ExpirationDate = DateTime.UtcNow.AddDays(30),
+                PaymentDate = DateTime.UtcNow,
+                PaymentId = paymentId,
+                ProductName = "condom",
+                Quantity = 1,
+                Usages = 0
+            };
+            _paymentRepository.Create(model);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult PaymentWithPayPal(PayPalPaymentModel model, String guid, String product, string token, string PayerID)
         {
             var apiContext = Feromon.Web.Services.Configuration.GetAPIContext();
             string returnUrl = null;
@@ -37,7 +74,7 @@ namespace Feromon.Web.Controllers
                     // Creating a payment
                     var baseURI = string.Format("{0}://{1}{2}Payment/{3}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"), "PaymentWithPayPal?");
                     var _guid = Guid.NewGuid();
-                    var createdPayment = _paymentService.CreatePayment(apiContext, baseURI + "guid=" + _guid, model);
+                    var createdPayment = _paymentService.CreatePayment(apiContext, baseURI + "guid=" + _guid + "&product=" + model.ProductName, model);
 
                     var links = createdPayment.links.GetEnumerator();
 
@@ -56,9 +93,17 @@ namespace Feromon.Web.Controllers
                     // Executing a payment
                     var executedPayment = _paymentService.ExecutePayment(apiContext, PayerID,
                         Session[Request.Params["guid"]].ToString());
+
                 }
                 if (returnUrl != null)
                     return Redirect(returnUrl);
+                switch (product)
+                {
+                    case "condom":
+                        return RedirectToAction("ConfirmCondomPayment",
+                            new {paymentId = Session[Request.Params["guid"]].ToString()});
+                        break;
+                }
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)

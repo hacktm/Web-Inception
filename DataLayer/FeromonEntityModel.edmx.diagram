@@ -4,7 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8f1399eab484b53a50424bb0cdbcdd4" Name="Diagram1" />
+      <Diagram DiagramId="d8f1399eab484b53a50424bb0cdbcdd4" Name="Diagram1" >
+        <EntityTypeShape EntityType="feromondatabaseModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="feromondatabaseModel.AspNetRole" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="feromondatabaseModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="feromondatabaseModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="10.125" />
+        <EntityTypeShape EntityType="feromondatabaseModel.AspNetUser" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="feromondatabaseModel.Payment" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="feromondatabaseModel.UsageProduct" Width="1.5" PointX="5.25" PointY="1.375" />
+        <AssociationConnector Association="feromondatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="feromondatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="feromondatabaseModel.FK_Payments_0" />
+        <AssociationConnector Association="feromondatabaseModel.FK_UsageProducts_0" />
+        <AssociationConnector Association="feromondatabaseModel.AspNetUserRoles" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

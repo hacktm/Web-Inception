@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using Feromon.Web.SignalR;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.SignalR;
 using Feromon.FacebookHelper;
 using PayPal;
@@ -28,7 +30,8 @@ namespace Feromon.Web.Controllers
 
             //Stream compressedfile = Inception.WebClientMVC.Helpers.Utilities.UploadImageCompressed(file, 1200);
             //var photoURL = azureService.UploadBlobToContainer("photos", Guid.NewGuid() + Path.GetExtension(file.FileName), compressedfile);
-            
+         
+
             return View();
         }
 
