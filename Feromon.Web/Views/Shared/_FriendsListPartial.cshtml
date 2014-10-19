@@ -1,0 +1,66 @@
+﻿<style>
+    .user-item {
+        width: 350px;
+        margin: 0px 5px 5px 0px;
+        display: inline-block;
+        background-color: #4F4F4F;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+<div class="jumbotron" style="margin-top: 30px">
+    <h1>
+        Select your targeted persons
+    </h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <div style="width: 100%;max-height: 480px; overflow-y: scroll; margin-top: 50px">
+        @for (int i = 0; i <= 50; i++)
+        {
+            <div class="user-item @i">
+                <div style="width: 25%; float: left">
+                    <img src="~/Images/profile.jpg" style="width: 65px" />
+                </div>
+                <div style="width: 75%; float: left">
+                    <h3>Razvan IONICA</h3>
+                </div>
+            </div>
+        }
+    </div>
+    <br/>
+    <div style="width: 100%">
+        <center>
+            <p><a style=" width: 300px" id="shoot-btn" role="button" class="btn btn-primary btn-lg">Shoot &raquo;</a></p>
+        </center>
+    </div>
+    <br />
+</div>
+
+<script>
+    var selectedItems = [];
+    $(function () {
+        $(".user-item").click(function () {
+            var userId = this.className.replace("user-item", "").trim();
+            var color = $(this).css("background-color");
+            if (color == "rgb(79, 79, 79)") {
+                $("." + userId).css("background-color", "#ad1860");
+                selectedItems.push(userId);
+            } else if (color == "rgb(173, 24, 96)") {
+                $("." + userId).css("background-color", "#4F4F4F");
+                var index = selectedItems.indexOf(userId);
+                selectedItems.splice(index, 1);
+            }
+
+        });
+        $("#shoot-btn").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/Person/ShootSelectedPersons",
+                data: { selectedPersonList: selectedItems },
+                success: function(result) {
+                    
+                }
+            });
+        });
+    });
+</script>
